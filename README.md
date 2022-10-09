@@ -1,2 +1,6 @@
-# recommender_system
-Project focused on building a Spotify recommender system
+# Spotify Music Project
+
+## Important Files:
+- exploratory analysis
+- exploratory analysis visuals and key conclusions
+- recommendation system
