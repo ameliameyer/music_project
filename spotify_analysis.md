@@ -1,21 +1,15 @@
-# Spotify Music Project
-
-I extracted my Liked Songs from Spotify using [Spotipy](https://spotipy.readthedocs.io/en/2.21.0/), a Python library for the Spotify API, in order to perform analysis on my Spotify data. 
+# Exploring My Liked Songs on Spotify
 
 ## Important Files:
 - Pre-processing
 - EDA 
 - EDA Writeup and Visualizations
 
-## Further Exploration
-
 **this project is ongoing**
-
-# Exploring My Liked Songs on Spotify
 
 ## This Project
 
-In this project I pulled my 'Liked' songs from Spotify using the Python library Spotipy. 
+In this project I extracted my Liked Songs from Spotify using [Spotipy](https://spotipy.readthedocs.io/en/2.21.0/), a Python library for the Spotify API, in order to perform analysis on my Spotify data.
 
 I used the data to answer the following:
 - Is there a relationship between different audio features of a song?
