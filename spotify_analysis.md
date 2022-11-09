@@ -47,3 +47,34 @@ Dates I added songs to my 'Liked' songs range from March 3rd, 2017 to Novemeber 
 ![Liked Songs Clean Dataset](/images/liked_songs_clean.png)
 
 ![Liked Songs Clean Dataset Describe](/images/liked_songs_clean_describe.png)
+
+## Initial Visualizations
+
+#### Pearson Correlation Matrix Heatmap
+
+Correlation values range from -1 to 1. The closer a correlation value is to 1 (positive or negative), the stronger the correlation between the two variables. Variables with a strong positive correlation increase together, whereas variables with a strong negative correlation experience opposing polarization (as one goes up, the other goes down and vice versa). The closer the correlation is to 0, the weaker the correlation. 
+
+![Pearson Correlation Matrix Heatmap](/images/heatmap.png)
+
+- variables will always have a correlation of 1 with themselves
+- we can see the strongest positive correlation is between `energy` and `loudness` at 0.78. 
+- the strongest negative correlation is between `energy` and `acousticness` at -0.8.
+- the weakest positive correlation is between `speechiness` and `day` at 0.00025
+- the weakest negative correlation is between `liveliness` and `duration_s` at -6.25e-05.
+
+Some of these correlations make sense. You would consider songs that have more energy to be louder. You would also consider energy and acoustiness to be negativily correlation i.e. as energy goes up, acousticness goes down and vice versa.
+
+#### Popularity of the songs I've added sorted by popularity in descending order 
+
+![Popularity Table](/images/popularity.png)
+
+#### Audio Features Over Time
+
+![Popularity Over Time](/images/popularity_time.png)
+![Duration Over Time](/images/duration_time.png)
+![Danceability Over Time](/images/danceability_time.png)
+![Valence Over Time](/images/valence_time.png)
+![Energy Over Time](/images/energy_time.png)
+![Tempo Over Time](/images/tempo_time.png)
+
+## Findings and Conclusions
