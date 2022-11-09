@@ -68,7 +68,7 @@ Some of these correlations make sense. You would consider songs that have more e
 
 #### Popularity of the songs I've added sorted by popularity in descending order 
 
-![Popularity Table](/images/popularity.png)
+<img src="/images/popularity.png" alt="Popularity Table" width="800"/>
 
 #### Audio Features Over Time
 
