@@ -44,7 +44,9 @@ This dataset has 4786 rows and 20. Each row represents a 'liked song'. The colum
 
 Dates I added songs to my 'Liked' songs range from March 3rd, 2017 to Novemeber 7th, 2022 (the day I pulled the data from Spotify).  
 
-![Liked Songs Clean Dataset](/images/liked_songs_clean.png)
+![Liked Songs Clean Dataset](/images/liked_songs_clean.png) 
+
+
 <img src="/images/liked_songs_clean.png" alt="Liked Songs Clean Dataset" width="200"/>
 
 
