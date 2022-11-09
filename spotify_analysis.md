@@ -55,9 +55,8 @@ Dates I added songs to my 'Liked' songs range from March 3rd, 2017 to Novemeber 
 
 Correlation values range from -1 to 1. The closer a correlation value is to 1 (positive or negative), the stronger the correlation between the two variables. Variables with a strong positive correlation increase together, whereas variables with a strong negative correlation experience opposing polarization (as one goes up, the other goes down and vice versa). The closer the correlation is to 0, the weaker the correlation. 
 
-![Pearson Correlation Matrix Heatmap](/images/heatmap.png)
 
-<img src="/images/heatmap.png" alt="Pearson Correlation Matrix Heatmap" width="500"/>
+<img src="/images/heatmap.png" alt="Pearson Correlation Matrix Heatmap" width="800"/>
 
 - variables will always have a correlation of 1 with themselves
 - we can see the strongest positive correlation is between `energy` and `loudness` at 0.78. 
