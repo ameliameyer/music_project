@@ -103,8 +103,17 @@ Here, I used time series plots to map out particular audio features over time.
 All of these graphs appear to be roughly stationary meaning the values fluctuate continuously over time, meaning they are not dependent on time or there are no distinct trend or seasonal effect. We'll definitely want to look more into that.
 
 ## Findings and Conclusions
-Questions I wish to add my plots for:
+Questions and plots I want to add:
 
 - Taylor Swift is the artist I have added the greatest number of songs for over the years. How did my addition of Taylor Swift songs change throughout the years, or did it? *Note: We'll want to pay attention to album releases since she took a brief hiatus and I will often add her songs immediately when an album is released* It might also be interesting to see if I add the songs the same year the song is released or later on. 
 - How have my top artists changed throughout the years? How has the type of music I listen to changed throughout the years? <-- This one might be best in terms of genre. 
 - Graph of the number of songs over time. 
+- Which of my songs have made it on the top charting songs over the years for Spotify?
+- How have the audio features of my liked songs change throughout the year
+- What are the audio features for the most frequent genres in my dataset?
+- Genre k-means clustering
+- Song k-means clustering
+
+
+- Recommendation system
+- Spotify wrapped
