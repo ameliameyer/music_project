@@ -49,19 +49,25 @@ This dataset has 4786 rows and 20. Each row represents a 'liked song'. The colum
 | time_signature | estimated time signature | int, [3,7] indicating "3/4" to "7/4"|
 | valence | musical positivesness conveyed by a track | float, [0.0,1.0] |  
 
-Dates I added songs to my 'Liked' songs range from March 3rd, 2017 to Novemeber 7th, 2022 (the day I pulled the data from Spotify).  
+Dates I added songs to my 'Liked' songs range from March 3rd, 2017 (the day I created a Spotify account) to Novemeber 7th, 2022 (the day I pulled the data from Spotify).  
 
-![Liked Songs Clean Dataset](/images/liked_songs_clean.png) 
+This is a glimpe of my data. The tracks are in descending order of date added i.e. most recent date first.   
 
+![Liked Songs Clean Dataset](/images/liked_songs_clean.png)   
+
+We can take note of a few things right away. First, the popularity of the songs I added most recently are not strictly high or low values. All of the time signatures for these past five songs are in 4/4 and danceability is relatively similar across all songs. 
+
+I used the `dataset.describe()` method to investigate the numerical columns. The output of that is shown below:
 
 ![Liked Songs Clean Dataset Describe](/images/liked_songs_clean_describe.png)
+
+We might say for now that on average I listen to songs that are below mid popularity (44), with a relatively high tempo (119). These will need to be investigated further, but it's good to get a general idea of the column variables. 
 
 ## Initial Visualizations
 
 #### Pearson Correlation Matrix Heatmap
 
 Correlation values range from -1 to 1. The closer a correlation value is to 1 (positive or negative), the stronger the correlation between the two variables. Variables with a strong positive correlation increase together, whereas variables with a strong negative correlation experience opposing polarization (as one goes up, the other goes down and vice versa). The closer the correlation is to 0, the weaker the correlation. 
-
 
 <img src="/images/heatmap.png" alt="Pearson Correlation Matrix Heatmap" width="800"/>
 
@@ -77,7 +83,15 @@ Some of these correlations make sense. You would consider songs that have more e
 
 <img src="/images/popularity.png" alt="Popularity Table" width="800"/>
 
+As we can see, there is only one song in my liked songs that has a current popularity of 100. That's not to say the songs in my dataset have never had a ranking of 100, but that currently they are lower. The song mentioned is "Unholy" by Sam Smith featuring Kim Petras which came out recently and has been blowing up (or gaining popularity) on TikTok. As a song continues to age, its popularity levels out to its true value, similar to how the probability of a coin landing heads up eventually converges to 1/2 after many, many, many trials.   
+
+Another interesting note is that the songs in my dataset with the highest popularity score are almost all some form of pop. 
+
+The two artists here that appear the most are Taylor Swift and Harry Styles which makes sense because they are both very well-known and currently-trending artists. 
+
 #### Audio Features Over Time
+
+Here, I used time series plots to map out particular audio features over time. 
 
 ![Popularity Over Time](/images/popularity_time.png)
 ![Duration Over Time](/images/duration_time.png)
@@ -86,4 +100,11 @@ Some of these correlations make sense. You would consider songs that have more e
 ![Energy Over Time](/images/energy_time.png)
 ![Tempo Over Time](/images/tempo_time.png)
 
+All of these graphs appear to be roughly stationary meaning the values fluctuate continuously over time, meaning they are not dependent on time or there are no distinct trend or seasonal effect. We'll definitely want to look more into that.
+
 ## Findings and Conclusions
+Questions I wish to add my plots for:
+
+- Taylor Swift is the artist I have added the greatest number of songs for over the years. How did my addition of Taylor Swift songs change throughout the years, or did it? *Note: We'll want to pay attention to album releases since she took a brief hiatus and I will often add her songs immediately when an album is released* It might also be interesting to see if I add the songs the same year the song is released or later on. 
+- How have my top artists changed throughout the years? How has the type of music I listen to changed throughout the years? <-- This one might be best in terms of genre. 
+- Graph of the number of songs over time. 
