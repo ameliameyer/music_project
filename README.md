@@ -1,7 +1,5 @@
 # Exploring My Liked Songs on Spotify
 
-*Note: This is the github repository for project files and information. Click the link on the right to be taken to the project report.
-
 ## Important Files:
 - Pre-processing
 - EDA 
