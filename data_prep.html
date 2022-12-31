@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Spotify Analysis</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.io/favicon-32x32.png">
@@ -16,6 +20,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+    .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }  
+      
     body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     .w3-row-padding img {margin-bottom: 12px}
     .bgimg {
@@ -25,11 +53,6 @@
       background-image: url('https://raw.githubusercontent.com/ameliameyer/music_project/main/images/spotify_grey_logo.jpg');
       min-height: 100%;
     }
-      
-      table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      }
         </style>
   </head>
 <body>
