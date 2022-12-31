@@ -2,6 +2,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    }
+
+    .active, .collapsible:hover {
+     background-color: #555;
+     }
+
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    
     <title>Spotify Analysis</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.io/favicon-32x32.png">
@@ -75,21 +100,24 @@
     <h2>About the Datasets</h2>
     <hr class="w3-opacity">
     <p>
-      The first dataset is my comprised of my Liked Songs from Spotify. Liked songs are classified as those that received a 'like' which is in the shape of a heart on 
-      Spotify. I achieved this using <a href="https://spotipy.readthedocs.io/en/master/" target="_blank">Spotipy</a> which is a python library for the <a href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank">Spotify API</a> 
-      </p>
-      <br></br>
+      The first dataset is comprised of my Liked Songs from Spotify. Liked songs are classified as those that received a 'like' which is in the shape of a heart on 
+      Spotify. I extracted this data using <a href="https://spotipy.readthedocs.io/en/master/" target="_blank">Spotipy</a> which is a python library for the 
+      <a href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank">Spotify API</a>. My data extraction process can be found 
+      <a href="" target="_blank">here</a> along with my data cleaning code. 
+      </p>   
   
- 
-  <!-- Importing the Data -->
+  <!-- Importing & Cleaning the Data -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
     <h2>Importing the Data</h2>
     <hr class="w3-opacity">
-
- <!-- Cleaning the Data -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
-    <h2>Cleaning the Data</h2>
-    <hr class="w3-opacity">  
+    <p>
+      After extracting the data, I saved a copy. It's always good practice to have copies of your unchanged data to fall back on. 
+    </p>
+    
+    <button type="button" class="collapsible">Open Collapsible</button>
+      <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
     
     <!-- Attributes -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
@@ -239,6 +267,21 @@
 </div>
 
 <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+  
 // Open and close sidebar
 function openNav() {
   document.getElementById("mySidebar").style.width = "60%";
@@ -248,6 +291,7 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
+ 
 </script>
 
 </body>
