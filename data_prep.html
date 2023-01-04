@@ -100,27 +100,93 @@
     <p>
       The first dataset is comprised of my Liked Songs from Spotify. Liked songs are classified as those that received a 'like' which is in the shape of a heart on 
       Spotify. I extracted this data using <a href="https://spotipy.readthedocs.io/en/master/" target="_blank">Spotipy</a> which is a python library for the 
-      <a href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank">Spotify API</a>. The code for my data preprocessing can be found 
-      <a href="https://ameliameyer.github.io/music_project/data_prep_code.html" target="_blank">here</a>. 
+      <a href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank">Spotify API</a>.
       </p>   
   
-  <!-- Extracting the Data -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
+    <!-- Extracting the Data -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
     <h2>Importing the Data</h2>
     <hr class="w3-opacity">
     <p>
-      Spotipy initialization, ...  
+      The code for the Spotify initilization, along with my data preprocessing can be found 
+      <a href="https://ameliameyer.github.io/music_project/data_prep_code.html" target="_blank">here</a>
+      I extracted the track ids, names, artists, duration in milliseconds, popularity, and the date + time at which the song was added to my Liked Songs into a list
+      titled track.<br></br> 
+      Using this list, I created a dataframe liked_songs, then added the audio features for each track. 
+      <a href="https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features" target="_blank">Spotify audio features</a> allow 
+      you to perform deeper analysis on the tracks themselves. I chose to extract acousticness, speechiness, key, liveness, instrumentalness, energy, tempo, 
+      time_signature, loudness, danceability, and valence.<br></br>
+      Then, I added the genres associated with each artist in the form of a list. I selected the first 15 genres in the list of genres to get an idea of what is inclued
+      in the dataset. 
     </p>
-    
-    <button type="button" class="collapsible">Spotipy Initialization</button>
+  
+      <button type="button" class="collapsible">Code</button>
       <div class="content">
-        <p>FIXME, also add new Data Prep without the 4810 Incorrect number of songs listed. </p>
+      <p> 
+        genres[:15]
+        </p>
+      </div>
+      <blockquote style="border: 4px solid #CCCCCC; padding: 10px; background-color: #CCCCCC;"> 
+      [['alt z', 'indie pop', 'pop'],
+      ['alt z', 'canadian contemporary r&b', 'neo mellow', 'pop'],
+      ['hip hop', 'old school atlanta hip hop', 'rap'],
+      ['dance pop', 'pop', 'pop dance', 'post-teen pop', 'talent show', 'uk pop'],
+      ['social media pop'],
+      ['modern rock', 'punk blues', 'rock'],
+      [],
+      ['country', 'country road'],
+      ['adult standards',
+       'bossa nova',
+       'brazilian modern jazz',
+       'contemporary vocal jazz',
+       'jazz pop',
+       'lounge',
+       'piano mpb',
+       'vocal jazz'],
+      ['alternative rock', 'garage rock', 'modern rock', 'permanent wave', 'rock'],
+      ['oklahoma country'],
+      [],
+      ['album rock',
+       'beatlesque',
+       'classic rock',
+       'folk rock',
+       'mellow gold',
+       'rock',
+       'soft rock'],
+      ['pop'],
+      ['adult standards', 'canadian pop', 'jazz pop', 'lounge']]  
+      </blockquote> 
+  <br></br>
+  <p>Right off the bat, we can see some trends. There are several entries in the list here with 'pop' or 'rock'. Having a list of the associated genres is helpful, 
+     but we also want to take a look at the most popular genre for each artist. Luckily, the genres for each artist are already listed in order of popularity, starting
+     with the most popular. I extracted the first genre in the lists into a new column 'genre'. 
+  </p><br></br>
+    <p>Finally, I added a new column 'pitch_class'.</p>
+    <br></br>
+    <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p>
+        # change the key col type to int
+        liked_songs['key'] = liked_songs['key'].astype('int')
+        <br></br>
+        # create pitch class dictionary
+        pitch_classes = {0:'C/Do', 1:'C#/Do sost.', 2:'D/Re', 3:'D/Re sost.', 4:'E/Mi', 5:'F/Fa', 6:'F#/Fa sost.', 7:'G/Sol', 8:'G#/Sol sost.', 9:'A/La', 10:'A#/La sost.', 11:'B/Si'}
+        # create pitch class column and map it to the dictionary
+        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes)
+        </p>
+      </div>
+      
+      <p>After extracting the data, I saved a copy. It's always good practice to have copies of your unchanged data to fall back on. </p>
+      <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p>
+        # save an original copy of the dataset
+        liked_songs.to_csv('liked_songs_original.csv')
+        </p>
       </div>
     
-    <p> After extracting the data, I saved a copy because always good practice to have copies of your unchanged data to fall back on. </p>
-    
     <!-- Cleaning the Data -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
+    <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
     <h2>Importing the Data</h2>
     <hr class="w3-opacity">
     <p>
