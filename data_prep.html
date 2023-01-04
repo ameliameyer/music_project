@@ -160,10 +160,10 @@
   <p>Right off the bat, there are some trends to be noticed. There are several entries in the list here with 'pop' or 'rock'. There are also two entries that are empty
     lists. I decided to categorize this as other. 
     
-    <button type="button" class="collapsible">Code</button>
+  
+      <button type="button" class="collapsible">Open Collapsible</button>
       <div class="content">
-      <p>
-         # first we'll create a copy of our genres list<br>
+      <p> # first we'll create a copy of our genres list<br>
          genres_copy = genres.copy()<br>
          <br>
          # then an empty dictionary for the artists and respective genres<br>
@@ -174,22 +174,18 @@
                 artists_genres[key] = value<br>
                 genres.remove(value)<br>
                 break<br>
-        <br>
         # now, we can create a new column in liked_songs called genre_list and map artists_genres to it<br>
-        liked_songs['genre_list'] = liked_songs['artists'].map(artists_genres)<br>
-        </p>
-  </div>
+        liked_songs['genre_list'] = liked_songs['artists'].map(artists_genres)</p>
+      </div>
+    <p>FIXME</p>
     
-    FIXME I JUST REALIZED I MADE AN ERROR IN MY CODE WITH THE OTHER
-    
-    
-    Having a list of the associated genres is helpful, 
-     but we also want to take a look at the most popular genre for each artist. Luckily, the genres for each artist are already listed in order of popularity, starting
-     with the most popular. I extracted the first genre in the lists into a new column 'genre'. 
-  </p><br></br>
+    <p>
+     Having a list of the associated genres is helpful, but we also want to take a look at the most popular genre for each artist. Luckily, the genres for each artist 
+     are already in descending order of popularity. I extracted the first genre in the lists (most popular) into a new column 'genre'. INSERT CODE FOR THAT BELOW
+  </p>
   
-    <p>Finally, I added a new column 'pitch_class'.</p>
-    <br></br>
+    <p>Finally, I added a new column 'pitch_class' which displays the readable pitches of each song. This is mapped to the key column. </p>
+    <br>
     <button type="button" class="collapsible">Code</button>
       <div class="content">
       <p>
@@ -199,7 +195,7 @@
         # create pitch class dictionary <br>
         pitch_classes = {0:'C/Do', 1:'C#/Do sost.', 2:'D/Re', 3:'D/Re sost.', 4:'E/Mi', 5:'F/Fa', 6:'F#/Fa sost.', 7:'G/Sol', 8:'G#/Sol sost.', 9:'A/La', 10:'A#/La sost.', 11:'B/Si'} <br>
         # create pitch class column and map it to the dictionary <br>
-        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes) <br>
+        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes)<br>
         </p>
       </div>
       
@@ -212,9 +208,11 @@
         </p>
       </div>
     
+    <p>Here you can see a sneak of the first 5 rows of the dataset. FIXME ME ADD PIC OF DATASET AT FIRST 5</p>
+    
     <!-- Cleaning the Data -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
-    <h2>Importing the Data</h2>
+    <h2>Cleaning the Data</h2>
     <hr class="w3-opacity">
     <p>
       After extracting the data, I saved a copy. It's always good practice to have copies of your unchanged data to fall back on. 
@@ -222,7 +220,7 @@
     
     <button type="button" class="collapsible">Open Collapsible</button>
       <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>blah blah blah</p>
       </div>
     
     <!-- Attributes -->
