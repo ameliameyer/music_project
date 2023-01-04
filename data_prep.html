@@ -127,34 +127,34 @@
         </p>
       </div>
       <blockquote style="border: 4px solid #CCCCCC; padding: 10px; background-color: #CCCCCC;"> 
-      [['alt z', 'indie pop', 'pop'],  
-      ['alt z', 'canadian contemporary r&b', 'neo mellow', 'pop'],  
-      ['hip hop', 'old school atlanta hip hop', 'rap'],  
-      ['dance pop', 'pop', 'pop dance', 'post-teen pop', 'talent show', 'uk pop'],  
-      ['social media pop'],  
-      ['modern rock', 'punk blues', 'rock'],  
-      [],  
-      ['country', 'country road'],  
-      ['adult standards',   
-       'bossa nova',  
-       'brazilian modern jazz',  
-       'contemporary vocal jazz',  
-       'jazz pop',  
-       'lounge',  
-       'piano mpb',  
-       'vocal jazz'],  
-      ['alternative rock', 'garage rock', 'modern rock', 'permanent wave', 'rock'],  
-      ['oklahoma country'],  
-      [],  
-      ['album rock',  
-        'beatlesque',  
-       'classic rock',  
-       'folk rock',  
-       'mellow gold',  
-       'rock',  
-       'soft rock'],  
-      ['pop'],  
-      ['adult standards', 'canadian pop', 'jazz pop', 'lounge']]    
+      [['alt z', 'indie pop', 'pop'], <br>
+      ['alt z', 'canadian contemporary r&b', 'neo mellow', 'pop'], <br>  
+      ['hip hop', 'old school atlanta hip hop', 'rap'],  <br>
+      ['dance pop', 'pop', 'pop dance', 'post-teen pop', 'talent show', 'uk pop'],  <br>
+      ['social media pop'],  <br>
+      ['modern rock', 'punk blues', 'rock'],  <br>
+      [],  <br>
+      ['country', 'country road'],  <br>
+      ['adult standards',   <br>
+       'bossa nova',  <br>
+       'brazilian modern jazz',  <br>
+       'contemporary vocal jazz',  <br>
+       'jazz pop',  <br>
+       'lounge',  <br>
+       'piano mpb',  <br>
+       'vocal jazz'],  <br>
+      ['alternative rock', 'garage rock', 'modern rock', 'permanent wave', 'rock'], <br> 
+      ['oklahoma country'],  <br>
+      [],  <br>
+      ['album rock',  <br>
+        'beatlesque',  <br>
+       'classic rock',  <br>
+       'folk rock',  <br>
+       'mellow gold',  <br>
+       'rock',  <br>
+       'soft rock'],  <br>
+      ['pop'],  <br>
+      ['adult standards', 'canadian pop', 'jazz pop', 'lounge']]    <br>
       </blockquote> 
   <br></br>
   <p>Right off the bat, we can see some trends. There are several entries in the list here with 'pop' or 'rock'. Having a list of the associated genres is helpful, 
@@ -166,13 +166,13 @@
     <button type="button" class="collapsible">Code</button>
       <div class="content">
       <p>
-        # change the key col type to int
-        liked_songs['key'] = liked_songs['key'].astype('int')
+        # change the key col type to int <br>
+        liked_songs['key'] = liked_songs['key'].astype('int') <br>
         <br></br>
-        # create pitch class dictionary
-        pitch_classes = {0:'C/Do', 1:'C#/Do sost.', 2:'D/Re', 3:'D/Re sost.', 4:'E/Mi', 5:'F/Fa', 6:'F#/Fa sost.', 7:'G/Sol', 8:'G#/Sol sost.', 9:'A/La', 10:'A#/La sost.', 11:'B/Si'}
-        # create pitch class column and map it to the dictionary
-        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes)
+        # create pitch class dictionary <br>
+        pitch_classes = {0:'C/Do', 1:'C#/Do sost.', 2:'D/Re', 3:'D/Re sost.', 4:'E/Mi', 5:'F/Fa', 6:'F#/Fa sost.', 7:'G/Sol', 8:'G#/Sol sost.', 9:'A/La', 10:'A#/La sost.', 11:'B/Si'} <br>
+        # create pitch class column and map it to the dictionary <br>
+        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes) <br>
         </p>
       </div>
       
@@ -180,8 +180,8 @@
       <button type="button" class="collapsible">Code</button>
       <div class="content">
       <p>
-        # save an original copy of the dataset
-        liked_songs.to_csv('liked_songs_original.csv')
+        # save an original copy of the dataset <br>
+        liked_songs.to_csv('liked_songs_original.csv') <br>
         </p>
       </div>
     
