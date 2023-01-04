@@ -105,7 +105,7 @@
   
     <!-- Extracting the Data -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
-    <h2>Importing the Data</h2>
+    <h2>Extracting the Data</h2>
     <hr class="w3-opacity">
     <p>
       The code for the Spotify initilization, along with my data preprocessing can be found 
@@ -126,7 +126,7 @@
         genres[:15]
         </p>
       </div>
-      <blockquote style="border: 5px solid #d9d9d9; padding: 18px; background-color: #d9d9d9;"> 
+      <blockquote style="border: 18px solid #d8d8d8; padding: 18px; background-color: #d8d8d8;"> 
       [['alt z', 'indie pop', 'pop'], <br>
       ['alt z', 'canadian contemporary r&b', 'neo mellow', 'pop'], <br>  
       ['hip hop', 'old school atlanta hip hop', 'rap'],  <br>
@@ -156,11 +156,38 @@
       ['pop'],  <br>
       ['adult standards', 'canadian pop', 'jazz pop', 'lounge']]    <br>
       </blockquote> 
-  <br></br>
-  <p>Right off the bat, we can see some trends. There are several entries in the list here with 'pop' or 'rock'. Having a list of the associated genres is helpful, 
+  
+  <p>Right off the bat, there are some trends to be noticed. There are several entries in the list here with 'pop' or 'rock'. There are also two entries that are empty
+    lists. I decided to categorize this as other. 
+    
+    <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p>
+         # first we'll create a copy of our genres list<br>
+         genres_copy = genres.copy()<br>
+         <br>
+         # then an empty dictionary for the artists and respective genres<br>
+         artists_genres = {}<br>
+         # and iterate through the artists and the genre lists to populate the dictionary<br>
+         for key in artists:<br>
+            for value in genres:<br>
+                artists_genres[key] = value<br>
+                genres.remove(value)<br>
+                break<br>
+        <br>
+        # now, we can create a new column in liked_songs called genre_list and map artists_genres to it<br>
+        liked_songs['genre_list'] = liked_songs['artists'].map(artists_genres)<br>
+        </p>
+  </div>
+    
+    FIXME I JUST REALIZED I MADE AN ERROR IN MY CODE WITH THE OTHER
+    
+    
+    Having a list of the associated genres is helpful, 
      but we also want to take a look at the most popular genre for each artist. Luckily, the genres for each artist are already listed in order of popularity, starting
      with the most popular. I extracted the first genre in the lists into a new column 'genre'. 
   </p><br></br>
+  
     <p>Finally, I added a new column 'pitch_class'.</p>
     <br></br>
     <button type="button" class="collapsible">Code</button>
