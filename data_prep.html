@@ -189,6 +189,19 @@
      The genre list for each artist is sorted in descending order by popularity. I extracted the first genre in the lists (most popular) into a new column 'genre'.
   </p>
       
+     <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p>
+        # using list comprehension to get the first genre for each genre list in genres_copy<br>
+        first_genre = [genre_list[0] for genre_list in genres_copy]
+        <br>
+        # create a dictionary for the artists and respective genres<br>
+        artists_genre =  dict(zip(artists,first_genre))
+        <br>
+        # create new column in liked_songs called genre and map artists_genres to it<br>
+        liked_songs['genre'] = liked_songs['artists'].map(artists_genre)
+        </p>
+      </div>
   
     <p>Finally, I added a new column 'pitch_class' which displays the readable pitches of each song. This is mapped to the key column. </p>
     <br>
@@ -197,11 +210,11 @@
       <p>
         # change the key col type to int <br>
         liked_songs['key'] = liked_songs['key'].astype('int') <br>
-        <br></br>
+        <br>
         # create pitch class dictionary <br>
         pitch_classes = {0:'C/Do', 1:'C#/Do sost.', 2:'D/Re', 3:'D/Re sost.', 4:'E/Mi', 5:'F/Fa', 6:'F#/Fa sost.', 7:'G/Sol', 8:'G#/Sol sost.', 9:'A/La', 10:'A#/La sost.', 11:'B/Si'} <br>
         # create pitch class column and map it to the dictionary <br>
-        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes)<br>
+        liked_songs['pitch_class'] = liked_songs['key'].map(pitch_classes)
         </p>
       </div>
       
@@ -214,7 +227,11 @@
         </p>
       </div>
     
-    <p>Here you can see a sneak of the first 5 rows of the dataset. FIXME ME ADD PIC OF DATASET AT FIRST 5</p>
+    <p>Here you can see a sneak of the first 5 rows of the dataset.</p>
+  
+    <picture>
+    <img src="liked_songs_original.png" alt="Original Liked Songs Dataset" style="width:auto;">
+    </picture>
     
     <!-- Cleaning the Data -->
     <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="import">
@@ -224,7 +241,7 @@
       After extracting the data, I saved a copy. It's always good practice to have copies of your unchanged data to fall back on. 
     </p>
     <br>
-    <button type="button" class="collapsible">Open Collapsible</button>
+    <button type="button" class="collapsible">FIXME</button>
       <div class="content">
       <p>blah blah blah</p>
       </div>
