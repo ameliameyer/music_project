@@ -158,31 +158,37 @@
       </blockquote> 
   
   <p>Right off the bat, there are some trends to be noticed. There are several entries in the list here with 'pop' or 'rock'. There are also two entries that are empty
-    lists. I decided to categorize this as other. 
+    lists. I decided to categorize this as other. I started by creating a copy of my genres, and replacing the empty genre lists with 'other'. Then I created a new 
+    column genre_list and mapped the genre lists to the artists. 
     
-  
-      <button type="button" class="collapsible">Open Collapsible</button>
+ 
+      <button type="button" class="collapsible">Code</button>
       <div class="content">
-      <p> # first we'll create a copy of our genres list<br>
-         genres_copy = genres.copy()<br>
-         <br>
-         # then an empty dictionary for the artists and respective genres<br>
-         artists_genres = {}<br>
-         # and iterate through the artists and the genre lists to populate the dictionary<br>
-         for key in artists:<br>
-            for value in genres:<br>
-                artists_genres[key] = value<br>
-                genres.remove(value)<br>
-                break<br>
-        # now, we can create a new column in liked_songs called genre_list and map artists_genres to it<br>
-        liked_songs['genre_list'] = liked_songs['artists'].map(artists_genres)</p>
+      <p> 
+        # we'll create a copy of our genres list <br>
+        genres_copy = genres.copy()
+        <br>
+        # iterate through genres_copy and add the substitute other in empty lists<br>
+        for genre_list in genres_copy:<br>
+            if (genre_list == []):<br>
+                genre_list.append('other')
+        <br>
+        # now that the empty lists have been replaced with 'other'<br>
+        # create a dictionary for the artists and respective genres<br>
+        artists_genres =  dict(zip(artists,genres_copy))
+        <br>
+        # create new column in liked_songs called genre_list and map artists_genres to it<br>
+        liked_songs['genre_list'] = liked_songs['artists'].map(artists_genres)
+        <br>
+        # view the list of genres per artist<br>
+        liked_songs.genre_list[:10]<br>
+        </p>
       </div>
-    <p>FIXME</p>
-    
+    <br>
     <p>
-     Having a list of the associated genres is helpful, but we also want to take a look at the most popular genre for each artist. Luckily, the genres for each artist 
-     are already in descending order of popularity. I extracted the first genre in the lists (most popular) into a new column 'genre'. INSERT CODE FOR THAT BELOW
+     The genre list for each artist is sorted in descending order by popularity. I extracted the first genre in the lists (most popular) into a new column 'genre'.
   </p>
+      
   
     <p>Finally, I added a new column 'pitch_class' which displays the readable pitches of each song. This is mapped to the key column. </p>
     <br>
@@ -217,7 +223,7 @@
     <p>
       After extracting the data, I saved a copy. It's always good practice to have copies of your unchanged data to fall back on. 
     </p>
-    
+    <br>
     <button type="button" class="collapsible">Open Collapsible</button>
       <div class="content">
       <p>blah blah blah</p>
