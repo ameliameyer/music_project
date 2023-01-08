@@ -58,29 +58,51 @@
   <!-- Header -->
   <header class="w3-container w3-center" style="padding:128px 16px" id="home">
     <h1 class="w3-jumbo"><b>EDA</b></h1>
-    <p>EDA</p>
+    <p>This page covers some of the EDA I performed on my liked songs dataset. </p>
     <a href="https://github.com/ameliameyer/music_project" class="w3-button w3-black w3-padding-large w3-margin-top" target="_blank">
       <i class="fa fa-github-alt"></i> Github Repository
     </a>
     
   </header>
 
-  <!-- About Section -->
+  <!--Top Artists-->
   <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="about">
-    <h2>About</h2>
+    <h2>Top Artists</h2>
     <hr class="w3-opacity">
-    <p>In this project I extracted my Liked Songs from Spotify using [Spotipy](https://spotipy.readthedocs.io/en/2.21.0/), a Python library for the Spotify API, in order to perform analysis on my Spotify data. <br></br>
-      
-I used the data to answer the following:
-- Is there a relationship between different audio features of a song?  
-- Are the songs I listen to more or less popular?  
-- Which artists to add the most?  
-- Is there a pattern to when I add the most songs or a certain type of songs? - seasons, months, days of the week, etc
-- Do I add more songs in the beginning or at the end of the month?  
-- Which artists/songs   
-- How do the songs I've added compare to the most popular songs on Spotify in 2022, 2021, ...?  
-</p>
+    <p>I started out by comparing my top 10 artists overall to my top 10 artists for 2022 in particular.</p>
   
+     <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+        # my top ten added artists overall<br>
+        # create top songs variable of the 25 artists with the most songs in the dataset<br>
+        top_songs = liked_songs.artists.value_counts()[:25] <br>
+        top_songs = top_songs.reset_index() <br>
+        # select the columns<br>
+        top_songs.columns = ['artist', 'number_of_songs']<br>
+        <br>
+        # create barplot of the data <br>
+        ax = sns.barplot(x = 'number_of_songs', y = 'artist', data = top_songs)<br>
+        <br>
+        # my top ten artists for 2022 <br>
+        # create top songs variable of the 25 artists with the most songs in the dataset, added in 2022 only<br>
+        top_songs_2022 =  liked_songs[liked_songs.year == 2022]['artists'].value_counts()[:25]<br>
+        top_songs_2022 = top_songs_2022.reset_index()<br>
+        # select the columns <br>
+        top_songs_2022.columns = ['artist', 'number_of_songs']<br>
+        <br>
+        # create barplot of the data<br>
+        ax = sns.barplot(x = 'number_of_songs', y = 'artist', data = top_songs_2022)
+        </p>
+      </div>
+    
+      <img src="images/top_songs.png" alt="Top Songs" width="300" height="300">
+      <img src="images/top_songs_2022.png" alt="Top Songs 2022" width="300" height="300">
+    
+    
+    <p>As we can see, the artist I've added the most songs for over the years is Taylor Swift, whereas the artist I've added the most songs for 2022 is 
+      5 Seconds of Summer. We can compare this later on to our 2022-Wrapped dataset to see if the artists I've added the most songs for
+      are also the artists I listened to the most often in 2022.</p>
 
 <!-- Contact Section -->
   <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
