@@ -103,7 +103,145 @@
     <p>As we can see, the artist I've added the most songs for over the years is Taylor Swift, whereas the artist I've added the most songs for 2022 is 
       5 Seconds of Summer. We can compare this later on to our 2022-Wrapped dataset to see if the artists I've added the most songs for
       are also the artists I listened to the most often in 2022.</p>
+    
+    <p>We can also take a look at the most popular songs in my dataset. Do the artists I've added the most songs for appear at the top of this list?</p>
+    
+    <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+        # select cols from liked songs and sort by popularity <br>
+        liked_songs[['added_at','name', 'artists', 'popularity', 'genre']].sort_values('popularity', ascending=False)[:20]<br>
+        </p>
+      </div>
+    
+      <img src="images/popularity.png" alt="Most Popular Songs" width="300" height="300">
+    
+    <p>Taylor Swift, Harry Styles, and Conan Gray seem to appear in both places -- all of whom are pop artists. It does appear that most of the songs at the top of the 
+    popularity ranking are by pop artists. We can see that the popularity ranking of the top 20 songs ranges from 100 to 89. This suggests that the overall popularity of
+    the songs in the dataset is not very high. We can check this with a histplot.</p>
+    
+    <img src="images/popularity_plot.png" alt="Popularity Plot" width="300" height="300">
 
+    <p>Excluding the 468 songs that have a popularity of 0, the overall popularity of the songs in the dataset is roughly normal with a mean
+      score of 45. The median, however, is a popularity score of 48. We can create a violin plot to see what the popularity of the six most frequent genres in the 
+      dataset looks like.</p>
+    
+    <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+        # find the top 6 genres in the dataset <br>
+        liked_songs.genre.value_counts().head(6).axes <br>
+        <br>
+        top_six_genres = liked_songs[liked_songs.genre.isin(['dance pop', 'pop', 'alt z', 'other', 'boy band', 'acoustic pop'])]<br>
+        <br>
+        # running the violin plot on top 6 genres <br>
+        sns.violinplot(x=top_six_genres["genre"], y=top_six_genres["popularity"]);
+        </p>
+      </div>
+    
+    <img src="images/genre_pop.png" alt="Popularity By Genre" width="300" height="300">
+    
+    <p>pop and dance pop seem to have the highest concentration of songs with popularity rankings between 20 and 100. Both bow out around a popularity of 60 meaning 
+    most songs in these genres have a popularity of 60. </p>
+    
+    <!-- Correlation Plot-->
+  <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
+    <h2>Correlation Plot</h2>
+    <hr class="w3-opacity">
+    
+    <p>We can make a heatmap of the correlation between the variables in the dataset. Correlation values range from -1 to 1. 
+      The closer a correlation value is to 1 (positive or negative), the stronger the correlation between the two variables. 
+      Variables with a strong positive correlation increase together, whereas variables with a strong negative correlation experience opposing polarization 
+      (as one goes up, the other goes down and vice versa). The closer the correlation is to 0, the weaker the correlation. Variables will always have a correlation
+      of 1 with themselves. </p>
+    
+    <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+        # create heatmap for correlation <br>
+        plt.figure(figsize=(15, 10)) <br>
+        corr = liked_songs.corr() <br>
+        sns.heatmap(corr, annot=True, cmap="coolwarm").set_title('Pearson correlation matrix') <br>
+        plt.show() <br>
+        </p>
+      </div>
+    
+      <img src="images/corr_coef.png" alt="Correlation Heatmap" width="300" height="300">
+    
+      <p>The two variables with the strongest negative correlation of -0.8 are energy and acousticness. This means that in general, as energy goes up, acoustiness goes down,
+        and vice versa. For example, a song that has a higher acoustic level typically has less energy. This makes sense because we typically consider acoustic songs
+        to contain more instrumentals (acousticness and instrumentalness have a positive correlation of 0.24. This isn't a very strong correlation but it is worth noting, 
+        whereas instrumentalness and energy have a negative correlation of -0.26). <br>
+        An example of this correlation is 'Reverie' by Claude Debussy - a classical piano piece - which has an acousticness level of 0.995 and an energy level of 0.00904.
+        <br>
+        The variables with the strongest positive correlation of 0.78 are energy and loudness. This means that songs with more energy are often louder. <br>
+    </p>
+    
+    <!-- Audio Features vs Genres-->
+    <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
+    <h2>Audio Features vs Genres</h2>
+    <hr class="w3-opacity">
+    
+    <p>We can also compare each of the audio features with the top six genres in the dataset.</p>
+    
+     <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+        for col in audio_features:<br>
+            plt.figure(figsize=(21,2))<br>
+            sns.boxplot(data=top_six_genres, x=col, y="genre", palette="Spectral");
+        </p>
+      </div>
+    
+    <img src="images/genre_features.png" alt="Genres vs Features" width="300" height="300">
+    
+    <p>It makes sense that acoustic pop has a higher level of acousticness, but it might suprising that boy band also has a higher level of acoustiness. It also makes
+    sense that boy band has a higher energy level, followed by dance pop, but I would expect dance pop to have a higher danceability level. </p>
+      
+    <!-- Time Series Plots-->
+    <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
+    <h2>Time Series</h2>
+    <hr class="w3-opacity">
+      
+      <p>Finally, we'll made time series plots of the feature attributes to visualize how the features of my songs have changed over time.</p>
+      
+     <button type="button" class="collapsible">Code</button>
+      <div class="content">
+      <p> 
+         def plot_time_series(col_name, title, rolling_window_days):<br>
+            daily_series = pd.Series(data=np.array(liked_songs[col_name]), <br> 
+                                      name=col_name, <br>
+                                      index=liked_songs['added_at']).sort_index()<br>
+            <br>
+            (daily_series.rolling(window = rolling_window_days)<br>
+            .mean()<br>
+            .plot(figsize=(30, 10))<br>
+            .set(xlabel='date (by day)', ylabel=col_name, title=title))<br>
+         <br>
+         plt.show()   <br>
+         <br>
+         plot_time_series('popularity', 'Popularity over time (window = 30 days)', 30)<br>
+         plot_time_series('duration_s', 'Duration (s) over time (window = 30 days)', 30)<br>
+         plot_time_series('danceability', 'Danceability over time (window = 30 days)', 30)<br>
+         plot_time_series('valence', 'Valence over time (window = 30 days)', 30)<br>
+         plot_time_series('energy', 'Energy over time (window = 30 days)', 30)<br>
+         plot_time_series('tempo', 'Tempo over time (window = 30 days)', 30)<br>
+        </p>
+      </div>
+    
+    <img src="images/time_series1.png" alt="Time Series 1" width="300" height="300">
+      
+    <img src="images/time_series2.png" alt="Time Series 2" width="300" height="300">
+     
+    <img src="images/time_series3.png" alt="Time Series 3" width="300" height="300">
+    
+    
+      <p>Overall, these plots look stationary, which means the series has constant variance over time, without trend or seasonality. Thus the series should look roughly
+      similar at whatever time you view it. If you'd like to read more about stationarity, you can check out 
+        <a href="https://otexts.com/fpp2/stationarity.html">Forecasting target="_blank"</a> Rob J Hyndman and George Athanasopoulos or this 
+         <a href="https://towardsdatascience.com/stationarity-in-time-series-analysis-90c94f27322">Medium article target="_blank"</a> by Shay Palachy. 
+      </p> 
+    
 <!-- Contact Section -->
   <div class="w3-padding-32 w3-content w3-text-grey" id="contact" style="margin-bottom:64px">
     <h2>Contact Me</h2>
